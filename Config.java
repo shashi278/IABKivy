@@ -10,7 +10,7 @@ import java.util.Map;
 
 public final class Config {
 
-// TODO : SKUs for our products: the premium upgrade (non-consumable) and gas (consumable)
+// TODO : Add SKUs for your products here
 
 public static final String PROD_ONETIME  = "onetime";
 public static final String PROD_MONTHLY_1= "month1";
