@@ -11,4 +11,4 @@ google play.
   ```
   adb install -i com.android.vending path/to/your/apk
   ```
-* Don't worry if you see an error saying the item is not available. It's because it needs your app to be published on the playstore in order to get correct products.
+* Don't worry if you see an error saying the item is not available. It's because your app needs to be published on the playstore in order to get correct products.
