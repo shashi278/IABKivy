@@ -25,6 +25,9 @@ Toast= autoclass('android.widget.Toast')
 String = autoclass('java.lang.String')
 CharSequence= autoclass('java.lang.CharSequence')
 
+LayoutParams= autoclass('android.view.WindowManager$LayoutParams')
+AndroidColor= autoclass('android.graphics.Color')
+
 PROD_ONETIME  = "onetime"
 PROD_MONTHLY_1= "month1"
 PROD_MONTHLY_2= "month2"
@@ -39,6 +42,12 @@ def show_toast(text):
     text= cast(CharSequence, String(text))
     t= Toast.makeText(context, text, Toast.LENGTH_SHORT)
     t.show()
+
+@run_on_ui_thread
+def set_statusbar_color(color):
+    window= context.getWindow()
+    window.addFlags(LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+    window.setStatusBarColor(AndroidColor.parseColor(color))
 
 kv="""
 #:import get_color_from_hex kivy.utils.get_color_from_hex
@@ -405,6 +414,11 @@ class DemoApp(MDApp):
         # make buttons disabled if it's already consumed
         # do other stuffs based on if the product is monthly/annually consumable etc.
         pass
+    
+    def on_start(self):
+        primary_clr= self.theme_cls.primary_color
+        hex_color= '#%02x%02x%02x' % (int(primary_clr[0]*200), int(primary_clr[1]*200), int(primary_clr[2]*200))
+        set_statusbar_color(hex_color)
 
     def build(self):
         self.billing = oiabilling.Billing(
