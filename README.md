@@ -1,7 +1,7 @@
 # IABKivy
 *In-app billing in Kivy Applications*
 
-This repository contains a working demo application build with Kivy which allows you to embed in-app purchasing using
+This repository contains a working demo application(inside bin directory) build with Kivy which allows you to embed in-app purchasing using
 google play.
 
 <img src="demo.gif" width="324" height="576">
